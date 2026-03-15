@@ -1,0 +1,89 @@
+server:
+  port: 8000  # 网关统一入口端口
+
+#spring:
+#  application:
+#    name: didadida-gateway  # 服务名，必须与Nacos上的配置Data ID前缀一致
+#  profiles:
+#    active: dev  # 环境标识：dev/test/prod
+#
+#  data:
+#    redis:
+#      host: 192.168.116.132
+#      port: 6379
+#      database: 0
+#      timeout: 5000ms
+#    # 核心新增：顶层 config.import，解决强制检查问题
+#  config:
+#    import:
+#      - nacos:didadida-common.yml
+#  cloud:
+#    nacos:
+#      # Nacos 服务发现
+#      discovery:
+#        server-addr: ${NACOS_SERVER:192.168.2.4:8848}  # 预留Nacos IP位置
+#        namespace: ${NACOS_NAMESPACE:dev}  # 命名空间，建议dev/test/prod隔离
+#        group: DIDADIDA_GROUP
+#      # Nacos 配置中心
+#      config:
+#        server-addr: ${NACOS_SERVER:192.168.2.4:8848}
+#        namespace: ${NACOS_NAMESPACE:dev}
+#        group: DIDADIDA_GROUP
+#        file-extension: yml
+#        shared-configs: # 共享配置（所有服务共用的配置，比如Sentinel）
+#          - data-id: didadida-common.yml
+#            group: DIDADIDA_GROUP
+#            refresh: true
+##        import:
+##          - nacos:didadida-common.yml,DIDADIDA_GROUP,true
+#    # Gateway 路由规则（也可以放Nacos，这里为了方便先放本地）
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true  # 开启从注册中心动态创建路由
+#      routes:
+#        # 用户服务路由
+#        - id: didadida-user
+#          uri: lb://didadida-user
+#          predicates:
+#            - Path=/api/user/**
+#          filters:
+#            - StripPrefix=2
+#        # 视频服务路由
+#        - id: didadida-video
+#          uri: lb://didadida-video
+#          predicates:
+#            - Path=/api/video/**
+#          filters:
+#            - StripPrefix=2
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 1000  # 每秒生成1000个令牌（稳定QPS）
+#                redis-rate-limiter.burstCapacity: 2000  # 令牌桶最大容量（突发流量）
+#                key-resolver: "#{@ipKeyResolver}"  # 按IP限流
+#        # 弹幕服务路由
+#        - id: didadida-danmaku
+#          uri: lb://didadida-danmaku
+#          predicates:
+#            - Path=/api/danmaku/**
+#          filters:
+#            - StripPrefix=2
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 500
+#                redis-rate-limiter.burstCapacity: 1000
+#                key-resolver: "#{@ipKeyResolver}"
+#        # 互动服务路由
+#        - id: didadida-interaction
+#          uri: lb://didadida-interaction
+#          predicates:
+#            - Path=/api/interaction/**
+#          filters:
+#            - StripPrefix=2
+#
+## 端点监控
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'

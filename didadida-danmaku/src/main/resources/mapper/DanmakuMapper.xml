@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didadida.danmaku.mapper.DanmakuMapper">
+
+    <!-- 根据视频ID和时间范围查询弹幕 -->
+    <select id="selectByVideoIdAndTimeRange" resultType="com.didadida.danmaku.entity.Danmaku">
+        SELECT * FROM t_danmaku
+        WHERE video_id = #{videoId}
+          AND video_time BETWEEN #{startTime} AND #{endTime}
+        ORDER BY video_time ASC
+    </select>
+
+    <!-- 根据视频ID查询弹幕数量 -->
+    <select id="selectCountByVideoId" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM t_danmaku
+        WHERE video_id = #{videoId}
+    </select>
+
+</mapper>

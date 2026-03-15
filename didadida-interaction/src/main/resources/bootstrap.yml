@@ -1,0 +1,28 @@
+spring:
+  # 应用名（Nacos配置的基础）
+  application:
+    name: didadida-interaction
+  # 激活的环境（dev）
+  profiles:
+    active: dev
+  # Nacos核心配置（加载时机远早于import）
+  cloud:
+    nacos:
+      # 服务发现配置
+      discovery:
+        server-addr: 192.168.2.4:8848  # 直接写死，先排除变量问题
+        namespace: dev                  # 你的命名空间ID
+        group: DIDADIDA_GROUP           # 你的分组
+      # 配置中心配置
+      config:
+        server-addr: 192.168.2.4:8848  # 和上面一致
+        namespace: dev                  # 和上面一致
+        group: DIDADIDA_GROUP           # 和上面一致
+        file-extension: yml             # 配置文件后缀
+        import-check:
+          enabled: true                 # 强制校验配置，找不到直接报错
+  # 导入Nacos配置（现在能读到上面的连接参数了）
+  config:
+    import:
+      - nacos:didadida-common.yml?group=DIDADIDA_GROUP&refresh=true
+      - nacos:didadida-interaction-datasource.yml?group=DIDADIDA_GROUP&refresh=true

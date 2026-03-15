@@ -1,0 +1,29 @@
+server:
+  port: 8000  # 网关端口（也可放Nacos，本地保留更灵活）
+
+spring:
+  application:
+    name: didadida-gateway  # 服务名（必须与Nacos中DataID前缀一致）
+  profiles:
+    active: dev  # 环境标识
+  # 核心：仅配置Nacos连接（bootstrap阶段加载，才能拉取Nacos中的配置）
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER:192.168.2.4:8848}
+        namespace: ${NACOS_NAMESPACE:dev}
+        group: DIDADIDA_GROUP
+      config:
+        server-addr: ${NACOS_SERVER:192.168.2.4:8848}
+        namespace: ${NACOS_NAMESPACE:dev}
+        group: DIDADIDA_GROUP
+        file-extension: yml
+        shared-configs:
+          - data-id: didadida-common.yml
+            group: DIDADIDA_GROUP
+            refresh: true
+  # 关键：解决Nacos配置导入的强制检查问题
+  config:
+    import:
+      - nacos:didadida-common.yml?group=DIDADIDA_GROUP&refresh=true
+      - nacos:didadida-gateway.yml?group=DIDADIDA_GROUP&refresh=true

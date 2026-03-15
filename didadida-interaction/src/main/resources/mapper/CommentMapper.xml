@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.didadida.interaction.mapper.CommentMapper">
+
+    <!-- 根据视频ID查询一级评论列表 -->
+    <select id="selectFirstLevelComments" resultType="com.didadida.interaction.entity.Comment">
+        SELECT * FROM t_comment
+        WHERE video_id = #{videoId}
+          AND parent_id = 0
+          AND status = 1
+        ORDER BY like_count DESC, create_time DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 根据父评论ID查询回复列表 -->
+    <select id="selectRepliesByParentId" resultType="com.didadida.interaction.entity.Comment">
+        SELECT * FROM t_comment
+        WHERE parent_id = #{parentId}
+          AND status = 1
+        ORDER BY create_time ASC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <!-- 增加评论的回复数 -->
+    <update id="incrementReplyCount">
+        UPDATE t_comment
+        SET reply_count = reply_count + 1
+        WHERE comment_id = #{commentId}
+    </update>
+
+    <!-- 增加评论的点赞数 -->
+    <update id="incrementLikeCount">
+        UPDATE t_comment
+        SET like_count = like_count + 1
+        WHERE comment_id = #{commentId}
+    </update>
+
+    <!-- 减少评论的点赞数 -->
+    <update id="decrementLikeCount">
+        UPDATE t_comment
+        SET like_count = like_count - 1
+        WHERE comment_id = #{commentId}
+    </update>
+
+</mapper>

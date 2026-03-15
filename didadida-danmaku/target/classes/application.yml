@@ -1,0 +1,34 @@
+server:
+  port: 8003  # 弹幕服务端口
+
+#spring:
+#  application:
+#    name: didadida-danmaku
+#  profiles:
+#    active: dev
+#  config:
+#    import:
+#      - nacos:didadida-common.yml
+#      - nacos:didadida-danmaku-datasource.yml
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: ${NACOS_SERVER:192.168.2.4:8848}
+#        namespace: ${NACOS_NAMESPACE:dev}
+#        group: DIDADIDA_GROUP
+#      config:
+#        server-addr: ${NACOS_SERVER:192.168.2.4:8848}
+#        namespace: ${NACOS_NAMESPACE:dev}
+#        group: DIDADIDA_GROUP
+#        file-extension: yml
+#        import:
+#          - nacos:didadida-common.yml,DIDADIDA_GROUP,true
+#          - nacos:didadida-danmaku-datasource.yml,DIDADIDA_GROUP,true
+#        shared-configs:
+#          - data-id: didadida-common.yml
+#            group: DIDADIDA_GROUP
+#            refresh: true
+#        extension-configs:
+#          - data-id: didadida-danmaku-datasource.yml
+#            group: DIDADIDA_GROUP
+#            refresh: true
