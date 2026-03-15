@@ -1,0 +1,11 @@
+server:
+  port: 8001  # 用户服务端口
+
+# 文件上传配置
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1GB  # 单个文件最大大小
+      max-request-size: 1GB  # 整个请求最大大小
+
+

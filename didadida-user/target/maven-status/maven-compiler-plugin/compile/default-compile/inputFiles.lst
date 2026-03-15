@@ -1,0 +1,16 @@
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\Main.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\controller\UserController.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\dto\RegisterDTO.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\feign\VideoFeignClient.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\DidadidaUserApplication.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\service\impl\UserServiceImpl.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\entity\UserFollow.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\dto\LoginResponseDTO.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\controller\VideoUploadController.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\dto\LoginDTO.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\dto\VideoChunkUploadDTO.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\config\SecurityConfig.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\mapper\UserMapper.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\config\RedisConfig.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\entity\User.java
+D:\games\baiduwangpan\mianshi\didadida\didadida\didadida\didadida-user\src\main\java\com\didadida\user\service\UserService.java
